@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>دليل تعديل الأدوية في رمضان</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#0b1020">
+  <link rel="icon" href="icons/icon-192.png">
+
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#101a36;
+      --card2:#0f1730;
+      --text:#e8ecff;
+      --muted:#b8c0ff;
+      --line:rgba(255,255,255,.10);
+      --pill:rgba(255,255,255,.08);
+      --good:#38d39f;
+      --warn:#f7c948;
+      --bad:#ff5c7a;
+      --shadow: 0 18px 50px rgba(0,0,0,.35);
+      --radius: 18px;
+      --radius2: 14px;
+      --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Noto Naskh Arabic","Noto Sans Arabic","Tahoma",Arial,sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      background:
+        radial-gradient(900px 500px at 15% 10%, rgba(56,211,159,.12), transparent 60%),
+        radial-gradient(900px 600px at 85% 15%, rgba(184,192,255,.10), transparent 55%),
+        radial-gradient(900px 700px at 50% 95%, rgba(247,201,72,.08), transparent 60%),
+        var(--bg);
+      color:var(--text);
+      min-height:100vh;
+    }
+    a{color:inherit}
+    .wrap{max-width:1050px;margin:0 auto;padding:18px 14px 40px}
+    header{
+      display:flex; gap:14px; align-items:center; justify-content:space-between;
+      padding:14px; border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{
+      width:46px;height:46px;border-radius:14px;
+      background:linear-gradient(135deg, rgba(56,211,159,.9), rgba(184,192,255,.55));
+      display:grid;place-items:center;color:#071021;font-weight:800;
+      box-shadow:0 10px 30px rgba(0,0,0,.35);
+      user-select:none;
+    }
+    h1{font-size:18px;margin:0 0 2px}
+    .sub{margin:0;color:var(--muted);font-size:12.5px;line-height:1.4}
+    .chiprow{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-start}
+    .chip{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      padding:7px 10px;border-radius:999px;
+      font-size:12px;color:var(--muted);
+      user-select:none;
+    }
+    .grid{
+      display:grid;grid-template-columns: 1.2fr .8fr;
+      gap:14px;margin-top:14px;
+    }
+    @media (max-width: 880px){ .grid{grid-template-columns:1fr} }
+    .panel{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .panel .hd{
+      padding:14px;border-bottom:1px solid var(--line);
+      display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;
+    }
+    .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    input, select, button{
+      font-family:inherit;color:var(--text);
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:10px 12px;
+      outline:none;
+    }
+    input{min-width:240px}
+    select{min-width:210px}
+    button{
+      cursor:pointer;
+      background:linear-gradient(180deg, rgba(56,211,159,.25), rgba(56,211,159,.12));
+      border-color: rgba(56,211,159,.35);
+    }
+    button:hover{filter:brightness(1.06)}
+    .body{padding:10px 14px 16px}
+    .list{display:flex;flex-direction:column;gap:10px}
+    .card{
+      border:1px solid var(--line);
+      background:rgba(16,26,54,.55);
+      border-radius:var(--radius2);
+      overflow:hidden;
+    }
+    .card summary{
+      list-style:none;
+      padding:12px 12px;
+      cursor:pointer;
+      display:flex;gap:10px;align-items:flex-start;justify-content:space-between;
+    }
+    .card summary::-webkit-details-marker{display:none}
+    .t1{font-weight:750}
+    .t2{color:var(--muted);font-size:12.5px;margin-top:2px}
+    .badge{
+      display:inline-flex;align-items:center;gap:6px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      padding:6px 10px;border-radius:999px;
+      font-size:12px;color:var(--muted);
+      white-space:nowrap;
+    }
+    .dot{width:8px;height:8px;border-radius:99px;background:var(--good);display:inline-block}
+    .content{padding:0 12px 12px}
+    .row{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .pill{
+      padding:8px 10px;border-radius:12px;
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      color:var(--muted);
+      font-size:12.5px;
+    }
+    .rec{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:14px;
+      background:linear-gradient(180deg, rgba(184,192,255,.10), rgba(255,255,255,.03));
+      border:1px solid rgba(184,192,255,.18);
+      line-height:1.6;
+    }
+    .right .body{padding:14px}
+    .note{
+      border:1px solid rgba(247,201,72,.25);
+      background:rgba(247,201,72,.08);
+      border-radius:16px;
+      padding:12px;
+      color:var(--text);
+      line-height:1.6;
+      margin-bottom:12px;
+    }
+    .mini{
+      color:var(--muted);
+      font-size:12.5px;
+      line-height:1.7;
+    }
+    footer{
+      margin-top:14px;
+      padding:12px 14px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:rgba(255,255,255,.03);
+      color:var(--muted);
+      font-size:12px;
+      display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;
+    }
+    .muted{color:var(--muted)}
+    .kbd{font-family:var(--mono);font-size:12px;background:rgba(255,255,255,.06);border:1px solid var(--line);padding:2px 6px;border-radius:8px}
+    .empty{
+      padding:18px;
+      border:1px dashed rgba(255,255,255,.18);
+      border-radius:16px;
+      color:var(--muted);
+      text-align:center;
+      background:rgba(255,255,255,.02);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">رم</div>
+        <div>
+          <h1>دليل تعديل الأدوية في رمضان</h1>
+          <p class="sub">ابحث عن الدواء وشاهد التوصيات بشكل سريع — يعمل بدون إنترنت بعد فتحه مرة واحدة.</p>
+        </div>
+      </div>
+      <div class="chiprow" aria-hidden="true">
+        <span class="chip">واجهة عربية</span>
+        <span class="chip">بحث + فلترة</span>
+        <span class="chip">قابل للتثبيت</span>
+      </div>
+    </header>
+
+    <div class="grid">
+      <section class="panel">
+        <div class="hd">
+          <div class="controls">
+            <input id="q" type="search" placeholder="ابحث: ميتفورمين، كونكور، لازيكس…" autocomplete="off" />
+            <select id="cat">
+              <option value="all">كل التصنيفات</option>
+            </select>
+            <select id="freq">
+              <option value="all">كل الجرعات</option>
+              <option value="مرة يوميا">مرة يوميا</option>
+              <option value="مرتين يوميا">مرتين يوميا</option>
+              <option value="3 مرات يوميا">3 مرات يوميا</option>
+              <option value="3 مرات أو أكثر">3 مرات أو أكثر</option>
+              <option value="حسب الحاجة/كما هي">حسب الحاجة/كما هي</option>
+            </select>
+          </div>
+          <button id="reset" type="button" title="إعادة الضبط">إعادة</button>
+        </div>
+
+        <div class="body">
+          <div id="stats" class="mini muted"></div>
+          <div class="list" id="list"></div>
+          <div id="empty" class="empty" style="display:none">لا يوجد نتائج مطابقة. جرّب كتابة اسم آخر أو غيّر الفلتر.</div>
+        </div>
+      </section>
+
+      <aside class="panel right">
+        <div class="hd">
+          <div class="t1">ملاحظات سريعة</div>
+          <div class="badge"><span class="dot"></span> نسخة Offline</div>
+        </div>
+        <div class="body">
+          <div class="note">
+            هذا المحتوى مخصص للاستخدام المهني/الإرشادي داخل العيادات، ولا يغني عن التقييم السريري الفردي (خاصةً مرضى الخطورة العالية، القصور الكلوي، الحمل، وكبار السن).
+          </div>
+
+          <div class="mini">
+            <div class="t1" style="margin:0 0 6px">كيف تثبّت التطبيق على الجوال؟</div>
+            <ul style="margin:0; padding-inline-start:18px">
+              <li>افتح الصفحة من متصفح الهاتف.</li>
+              <li>من القائمة اختر: <span class="kbd">Add to Home screen</span> / <span class="kbd">إضافة للشاشة الرئيسية</span>.</li>
+              <li>بعدها سيعمل كتطبيق مستقل.</li>
+            </ul>
+
+            <hr style="border:none;border-top:1px solid var(--line);margin:12px 0">
+
+            <div class="t1" style="margin:0 0 6px">نصيحة استخدام</div>
+            <div>اكتب اسم الدواء بالعربي أو الانجليزي (مثال: <span class="kbd">Metformin</span> أو <span class="kbd">المنظم</span>).</div>
+
+            <hr style="border:none;border-top:1px solid var(--line);margin:12px 0">
+
+            <div class="t1" style="margin:0 0 6px">عن النسخة</div>
+            <div class="muted">PWA بسيطة: ملف واحد + كاش Offline + بحث سريع.</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      <div>© <span id="y"></span> — إعداد: <strong>Dr Amro A. Abdalhadi</strong></div>
+      <div class="muted">آخر تحديث: <span id="build"></span></div>
+    </footer>
+  </div>
+
+<script>
+  // ===== Data (from your Word file) =====
+  const DATA = [
+    // Diabetes – oral medications
+    {cat:"السكري – أدوية فموية", drug_ar:"Metformin (المنظم)", drug_en:"Metformin", spec:"مرة يوميا", rec:"تؤخذ بعد الافطار مباشرة"},
+    {cat:"السكري – أدوية فموية", drug_ar:"Metformin (المنظم)", drug_en:"Metformin", spec:"مرتين يوميا", rec:"بعد الافطار والسحور"},
+    {cat:"السكري – أدوية فموية", drug_ar:"Metformin (المنظم)", drug_en:"Metformin", spec:"3 مرات أو أكثر", rec:"تقسيم الجرعة على الافطار والسحور"},
+
+    {cat:"السكري – أدوية فموية", drug_ar:"Sulfonylurea (الدوانيل/الجليكلازايد)", drug_en:"Sulfonylurea (glibenclamide/gliclazide)", spec:"مرة يوميا", rec:"تؤخذ على الافطار بدون تقليل الجرعة"},
+    {cat:"السكري – أدوية فموية", drug_ar:"Sulfonylurea (الدوانيل/الجليكلازايد)", drug_en:"Sulfonylurea (glibenclamide/gliclazide)", spec:"مرتين يوميا", rec:"تؤخذ على الافطار كما هي، جرعة السحور يتم تقليلها بنسبة 50 %"},
+
+    // Diabetes – insulin therapy
+    {cat:"السكري – علاج بالأنسولين", drug_ar:"الأنسولين طويل المدى (Long acting insulin)", drug_en:"Long acting insulin", spec:"مرة يوميا", rec:"تؤخذ قبل الافطار مباشرة ويتم تقليل الجرعة 30 %"},
+    {cat:"السكري – علاج بالأنسولين", drug_ar:"الأنسولين طويل المدى (Long acting insulin)", drug_en:"Long acting insulin", spec:"مرتين يوميا", rec:"تؤخذ جرعة الصباح قبل الافطار، يتم تقليل الجرعة على السحور 50 %"},
+    {cat:"السكري – علاج بالأنسولين", drug_ar:"الأنسولين المخلوط (Premixed insulin)", drug_en:"Premixed insulin", spec:"مرة يوميا", rec:"تؤخذ الجرعة قبل الافطار كما هي"},
+    {cat:"السكري – علاج بالأنسولين", drug_ar:"الأنسولين المخلوط (Premixed insulin)", drug_en:"Premixed insulin", spec:"مرتين يوميا", rec:"تؤخذ جرعة الصباح قبل الافطار كما هي، يتم تقليل جرعة السحور بنسبة 50 %"},
+    {cat:"السكري – علاج بالأنسولين", drug_ar:"الأنسولين سريع المفعول (Rapid acting insulin) مثل الابيدرا، الصافي", drug_en:"Rapid acting insulin (e.g., Apidra)", spec:"3 مرات يوميا", rec:"يتم الغاء جرعة الغذاء. تؤخذ جرعة الصباح قبل الافطار. جرعة العشاء تؤخذ قبل السحور ويتم تقليلها بنسبة 50 %"},
+    {cat:"السكري – علاج بالأنسولين", drug_ar:"الأنسولين سريع المفعول (Rapid acting insulin)", drug_en:"Rapid acting insulin", spec:"3 مرات يوميا", rec:"تؤخذ جرعة الصباح قبل الافطار. يتم الغاء جرعة الغذاء. تؤخذ جرعة المساء قبل السحور ويتم تقليلها بنسبة 30 %"},
+
+
+    // Antihypertensive medication
+    {cat:"أدوية الضغط", drug_ar:"الكونكور (Bisoprolol)", drug_en:"Bisoprolol", spec:"مرة يوميا", rec:"تؤخذ بعد السحور"},
+    {cat:"أدوية الضغط", drug_ar:"إنالابريل/لوزار (Enalapril and losartan)", drug_en:"Enalapril / Losartan", spec:"مرة يوميا", rec:"تؤخذ بعد صلاة العشاء"},
+    {cat:"أدوية الضغط", drug_ar:"إنالابريل/لوزار (Enalapril and losartan)", drug_en:"Enalapril / Losartan", spec:"مرتين يوميا", rec:"تؤخذ بعد الافطار وبعد السحور"},
+    {cat:"أدوية الضغط", drug_ar:"الاميكور 5mg (Amicor 5 mg)", drug_en:"Amicor 5 mg", spec:"مرة يوميا", rec:"تؤخذ بعد الافطار أو بعد السحور"},
+    {cat:"أدوية الضغط", drug_ar:"هيدروكلوروثيازايد 25 (HCT 25)", drug_en:"Hydrochlorothiazide 25 mg", spec:"مرة يوميا", rec:"تؤخذ بعد صلاة العشاء"},
+
+    // Antiplatelet
+    {cat:"مضادات الصفيحات", drug_ar:"الاسبرين/البلافيكس (Aspirin and Clopidogrel)", drug_en:"Aspirin / Clopidogrel", spec:"مرة يوميا", rec:"تؤخذ بعد وجبة الافطار مباشرة حتى تقل الاعراض الجانبية"},
+
+    // Heart failure
+    {cat:"قصور القلب", drug_ar:"اللازيكس (Furosemide)", drug_en:"Furosemide", spec:"مرة يوميا", rec:"تؤخذ بعد صلاة العشاء"},
+    {cat:"قصور القلب", drug_ar:"الديجوكسين (Digoxin)", drug_en:"Digoxin", spec:"مرة يوميا", rec:"تؤخذ بعد السحور"},
+    {cat:"قصور القلب", drug_ar:"الهيدروكلوروثيازايد واللازيكس (Furosemide + thiazide)", drug_en:"Furosemide + thiazide", spec:"—", rec:"ينصح بمراجعة الطبيب الاخصائي"},
+
+    // Epilepsy
+    {cat:"الصرع", drug_ar:"التيجريتول (Carbamazepine)", drug_en:"Carbamazepine", spec:"مرة يوميا", rec:"تؤخذ بعد الافطار"},
+    {cat:"الصرع", drug_ar:"التيجريتول (Carbamazepine)", drug_en:"Carbamazepine", spec:"مرتين يوميا", rec:"يؤخذ بعد الافطار وبعد السحور"},
+    {cat:"الصرع", drug_ar:"الديباكين (Sodium Valproate)", drug_en:"Sodium valproate", spec:"مرة يوميا", rec:"تؤخذ بعد الافطار"},
+    {cat:"الصرع", drug_ar:"الديباكين (Sodium Valproate)", drug_en:"Sodium valproate", spec:"مرتين يوميا", rec:"تؤخذ بعد الافطار وبعد السحور"},
+    {cat:"الصرع", drug_ar:"الفيناتوين (Phenytoin)", drug_en:"Phenytoin", spec:"مرة يوميا", rec:"تؤخذ بعد الافطار"},
+    {cat:"الصرع", drug_ar:"الفيناتوين (Phenytoin)", drug_en:"Phenytoin", spec:"مرتين يوميا", rec:"تؤخذ بعد الافطار والسحور"},
+
+    // Asthma
+    {cat:"الربو", drug_ar:"بخاخات الأزمة (Inhalers)", drug_en:"Inhalers", spec:"حسب الحاجة/كما هي", rec:"تؤخذ كما هي، لا تؤثر على الصيام"},
+    {cat:"الربو", drug_ar:"جهاز التبخيرة (Vaporizer)", drug_en:"Nebulizer/Vaporizer", spec:"حسب الحاجة/كما هي", rec:"تؤخذ كما هي،’ تبطل الصيام"},
+
+    // Lipids
+    {cat:"الدهون", drug_ar:"سيمفاستاتين (Simvastatin)", drug_en:"Simvastatin", spec:"مرة يوميا", rec:"يوخذ قبل النوم"},
+
+    // Thyroid
+    {cat:"الغدة الدرقية", drug_ar:"الثايروكسين (Thyroxine)", drug_en:"Thyroxine", spec:"مرة يوميا", rec:"يؤخذ بعد وجبة الافطار بساعتين، او قبل الوجبة التالية بنصف ساعة"},
+
+    // Warfarin
+    {cat:"مضادات التخثر", drug_ar:"الكومادين 5mg (Warfarin)", drug_en:"Warfarin 5 mg", spec:"مرة يوميا", rec:"بعد الافطار. ضرورة الانتباه الى التداخلات الدوائية والتداخلات مع الوجبات خصوصا الوجبات الغنية بفيتامين k"},
+  ];
+
+  // ===== Helpers =====
+  const $ = (s) => document.querySelector(s);
+  const el = (tag, attrs={}) => Object.assign(document.createElement(tag), attrs);
+
+  function norm(s){
+    return (s||"")
+      .toString()
+      .replace(/\s+/g," ")
+      .trim()
+      .toLowerCase();
+  }
+
+  function uniqueCats(){
+    const set = new Set(DATA.map(d => d.cat));
+    return Array.from(set);
+  }
+
+  function matches(item, q, cat, freq){
+    const t = norm(item.drug_ar + " " + item.drug_en + " " + item.rec + " " + item.spec + " " + item.cat);
+    const okQ = !q || t.includes(norm(q));
+    const okC = (cat === "all") || item.cat === cat;
+    const okF = (freq === "all") || item.spec === freq || (freq === "حسب الحاجة/كما هي" && item.spec === "حسب الحاجة/كما هي");
+    return okQ && okC && okF;
+  }
+
+  function groupByDrug(rows){
+    const map = new Map();
+    for(const r of rows){
+      const key = r.drug_ar;
+      if(!map.has(key)) map.set(key, []);
+      map.get(key).push(r);
+    }
+    return Array.from(map.entries()).map(([drug, entries]) => ({drug, entries}));
+  }
+
+  function copyText(txt){
+    navigator.clipboard?.writeText(txt).then(()=>{
+      // small toast without libraries
+      const b = $("#stats");
+      const old = b.textContent;
+      b.textContent = "✅ تم نسخ التوصية للحافظة";
+      setTimeout(()=>{ b.textContent = old; }, 1400);
+    }).catch(()=>{});
+  }
+
+  function render(){
+    const q = $("#q").value;
+    const cat = $("#cat").value;
+    const freq = $("#freq").value;
+
+    const rows = DATA.filter(d => matches(d, q, cat, freq));
+    const groups = groupByDrug(rows);
+
+    $("#stats").textContent = `النتائج: ${groups.length} دواء / ${rows.length} توصية`;
+
+    const list = $("#list");
+    list.innerHTML = "";
+
+    $("#empty").style.display = (rows.length === 0) ? "block" : "none";
+
+    for(const g of groups){
+      const details = el("details", {className:"card"});
+      const first = g.entries[0];
+
+      const summary = el("summary");
+      const left = el("div");
+      left.innerHTML = `<div class="t1">${escapeHtml(g.drug)}</div>
+                        <div class="t2">${escapeHtml(first.cat)}</div>`;
+
+      const badge = el("div", {className:"badge"});
+      badge.innerHTML = `<span class="dot"></span> ${g.entries.length} توصية`;
+
+      summary.append(left, badge);
+
+      const content = el("div", {className:"content"});
+
+      for(const e of g.entries){
+        const row = el("div", {className:"rec"});
+        const meta = el("div", {className:"row"});
+        meta.append(
+          pill(`التصنيف: ${e.cat}`),
+          pill(`الجرعة/التكرار: ${e.spec}`),
+          pill(`الاسم الإنجليزي: ${e.drug_en}`)
+        );
+
+        const rec = el("div");
+        rec.style.marginTop="10px";
+        rec.innerHTML = `<div class="t1" style="margin:0 0 6px">التوصية</div>
+                         <div>${escapeHtml(e.rec)}</div>`;
+
+        const actions = el("div", {className:"row"});
+        const btn = el("button", {type:"button", textContent:"نسخ التوصية"});
+        btn.addEventListener("click", ()=> copyText(`${g.drug}\n${e.cat}\n${e.spec}\n${e.rec}`));
+        actions.append(btn);
+
+        row.append(meta, rec, actions);
+        content.append(row);
+      }
+
+      details.append(summary, content);
+      list.append(details);
+    }
+  }
+
+  function pill(text){
+    const p = document.createElement("div");
+    p.className="pill";
+    p.textContent = text;
+    return p;
+  }
+
+  function escapeHtml(str){
+    return (str ?? "").toString()
+      .replaceAll("&","&amp;")
+      .replaceAll("<","&lt;")
+      .replaceAll(">","&gt;")
+      .replaceAll('"',"&quot;")
+      .replaceAll("'","&#039;");
+  }
+
+  // Build category options
+  for(const c of uniqueCats()){
+    const opt = document.createElement("option");
+    opt.value = c;
+    opt.textContent = c;
+    $("#cat").append(opt);
+  }
+
+  // Events
+  ["q","cat","freq"].forEach(id => $("#"+id).addEventListener("input", render));
+  $("#reset").addEventListener("click", ()=>{
+    $("#q").value="";
+    $("#cat").value="all";
+    $("#freq").value="all";
+    render();
+  });
+
+  // Footer stamps
+  $("#y").textContent = new Date().getFullYear();
+  $("#build").textContent = new Date().toLocaleString("ar");
+
+  // Register service worker
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("./sw.js").catch(()=>{});
+    });
+  }
+
+  render();
+</script>
+</body>
+</html>
