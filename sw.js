@@ -1,6 +1,6 @@
 // sw.js — Ramadan Medications PWA (desktop-install ready)
 
-const CACHE_NAME = "ramadan-meds-v3"; // غيّر الرقم كل مرة تعدّل index.html
+const CACHE_NAME = "ramadan-meds-v4"; // غيّر الرقم كل مرة تعدّل index.html
 
 // ملفات أساسية (لازم تكون موجودة بنفس المسار)
 const CORE_ASSETS = [
