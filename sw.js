@@ -1,7 +1,9 @@
-// sw.js — offline cache for Ramadan Meds PWA (Arabic)
-const CACHE_NAME = "ramadan-meds-ar-v1";
+// sw.js — Ramadan Medications PWA (desktop-install ready)
 
-const ASSETS = [
+const CACHE_NAME = "ramadan-meds-v3"; // غيّر الرقم كل مرة تعدّل index.html
+
+// ملفات أساسية (لازم تكون موجودة بنفس المسار)
+const CORE_ASSETS = [
   "./",
   "./index.html",
   "./manifest.webmanifest",
@@ -10,10 +12,10 @@ const ASSETS = [
   "./icons/icon-512.png"
 ];
 
-// Install: cache core files
+// Install: cache core
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(CORE_ASSETS))
   );
   self.skipWaiting();
 });
@@ -28,9 +30,38 @@ self.addEventListener("activate", (event) => {
   self.clients.claim();
 });
 
-// Fetch: cache-first (fast offline)
+// Fetch strategy:
+// - For navigation (HTML pages): network-first (لتطلع أحدث نسخة) ثم fallback للكاش
+// - For other assets: cache-first (سريع وأوفلاين)
 self.addEventListener("fetch", (event) => {
+  if (event.request.method !== "GET") return;
+
+  const req = event.request;
+  const isNav =
+    req.mode === "navigate" ||
+    (req.headers.get("accept") || "").includes("text/html");
+
+  if (isNav) {
+    event.respondWith(
+      fetch(req)
+        .then((res) => {
+          const copy = res.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(req, copy));
+          return res;
+        })
+        .catch(() => caches.match(req).then((c) => c || caches.match("./index.html")))
+    );
+    return;
+  }
+
   event.respondWith(
-    caches.match(event.request).then((cached) => cached || fetch(event.request))
+    caches.match(req).then((cached) => {
+      if (cached) return cached;
+      return fetch(req).then((res) => {
+        const copy = res.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(req, copy));
+        return res;
+      });
+    })
   );
 });
